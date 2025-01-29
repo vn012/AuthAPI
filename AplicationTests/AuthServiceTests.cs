@@ -29,7 +29,31 @@ namespace AplicationTests
         //    Assert.NotNull(result);
         //    Assert.Equal("user@example.com", result.Email);
         //}
+
+        [Fact]
+        public async Task Authenticate_ShouldReturnUser_WhenCredentialsAreValid()
+        {
+            // Arrange:
+            var userRepositoryMock = new Mock<IUserRepository>();
+
+            // Definindo os dados do fake repository, e o retorno esperado
+            var mockUsers = new TbUser()
+            {
+                Id = 1, Email = "user1@example.com", Password = "hashedpassword1" 
+            };
+
+            userRepositoryMock.Setup(repo => repo.GetByEmail("user1@example.com"))
+                .ReturnsAsync(mockUsers);
+
+
+            var authService = new AuthService(userRepositoryMock.Object);
+
+            //Act:
+            var result  = await authService.Authenticate2("email", "password");
+
+            //Assert:
+            Assert.NotNull(result);
+            Assert.True(result == false, "credenciais invalidas");
+        }
     }
-
-
 }

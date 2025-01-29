@@ -12,7 +12,6 @@ namespace Domain.Interfaces
         Task<List<TbUser>> GetAll();
         Task<TbUser> GetById(int id);
         Task<TbUser> GetByEmail(string email);
-
         Task<TbUser> Create(TbUser user);
         Task<TbUser> Update(TbUser user);
         Task<TbUser> Delete(int id);
