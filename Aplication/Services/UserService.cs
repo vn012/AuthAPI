@@ -39,17 +39,23 @@ namespace Aplication.Services
         public async Task<IEnumerable<UserDTO>> GetAll()
         {
             var userListRes = await _userRepository.GetAll();
+            var userList = new List<UserDTO>();
 
-            foreach(var item in userListRes)
+            foreach (var item in userListRes)
             {
                 var user = new UserDTO()
                 {
+                    Id = item.Id,
                     Username = item.Username,
                     Password = item.Password,
+                    Email = item.Email,
+                    Name = item.Name,
+                    Lastname = item.Lastname,
                 };
+
+                userList.Add(user);
             }
             
-            var userList = new List<UserDTO>();
 
             return userList;
         }

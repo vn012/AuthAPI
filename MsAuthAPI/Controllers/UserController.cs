@@ -28,7 +28,7 @@ namespace MsAuthAPI.Controllers
         //    return new CreatedAtRouteResult("GetMaterial", new { id = materialDTO.IdMaterial }, materialDTO);
         //}     
 
-        [HttpGet("UsersList", Name = "MaterialById")]
+        [HttpGet("UsersList", Name = "UserList")]
         public async Task<ActionResult<UserDTO>> GetUsersList()
         {
             var usersData = await _userService.GetAll();
