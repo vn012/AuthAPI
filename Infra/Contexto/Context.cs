@@ -25,7 +25,6 @@ namespace Infra.Contexto
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
             // optionsBuilder.UseNpgsql(_configuration.GetConnectionString("DefaultConnection"));
             optionsBuilder.UseNpgsql("Host=localhost;Database=postgres;Username=postgres;Password=lala123");
         }

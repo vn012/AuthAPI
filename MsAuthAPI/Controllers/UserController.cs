@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Aplication.DTOs;
 using Aplication.Interfaces;
+using Infra.Contexto;
+using System.Net;
 
 namespace MsAuthAPI.Controllers
 {
@@ -37,7 +39,34 @@ namespace MsAuthAPI.Controllers
                 return NotFound("user data not found");
             
             return Ok(usersData);
+        }     
+        
+        [HttpGet("teste", Name = "teste")]
+        public async Task<ActionResult<string>> teste()
+        {
+            try
+            {
+                string serverIp = null;
+                try
+                {
+                    var host = Dns.GetHostEntry(Dns.GetHostName());
+                    serverIp = host.AddressList
+                        .FirstOrDefault(ip => ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)?
+                        .ToString();
+                }
+                catch (Exception ex)
+                {
+                    //_logger.LogError(ex, "Erro ao obter o IP do servidor.");
+                }
+
+                return Ok(serverIp);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Erro interno no servidor.");
+            }
         }
+
 
     }
 }
