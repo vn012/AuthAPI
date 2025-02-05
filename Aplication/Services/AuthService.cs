@@ -22,7 +22,12 @@ namespace Aplication.Services
             _userRepository = userRepository;
         }
 
-        public Task<bool> Authenticate(string email, string password)
+        public Task<bool> Authenticate2(string email, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<TbUser> IAuthService.Authenticate(string email, string password)
         {
             throw new NotImplementedException();
         }
@@ -32,9 +37,5 @@ namespace Aplication.Services
             throw new NotImplementedException();
         }
 
-        Task<TbUser> IAuthService.Authenticate(string email, string password)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
