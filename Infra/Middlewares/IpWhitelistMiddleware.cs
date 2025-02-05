@@ -50,8 +50,5 @@ namespace Infra.Middlewares
 
             await _next(context);
         }
-
-
-
     }
 }
