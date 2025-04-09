@@ -1,0 +1,6 @@
+@MsAuthAPI_HostAddress = http://localhost:5121
+
+GET {{MsAuthAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
